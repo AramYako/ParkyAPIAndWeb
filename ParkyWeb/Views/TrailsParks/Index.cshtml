@@ -1,0 +1,48 @@
+﻿@model List<ParkyWeb.Models.ModelObjects.Trail>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Trail List</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-3">
+            <button onclick="window.location.href ='TrailsParks/Upsert'" type="button" class="btn btn-primary float-right"><i class="fas fa-folder-plus"></i> Add</button>
+        </div>
+    </div>
+
+    <div style="background-color:#cde8e2" class="p-3 rounded">
+        <table id="trailDataTable" class="table table-bordered">
+            <thead>
+                <tr class="table-danger">
+                    <th scope="col">National Park</th>
+                    <th scope="col">Trail Name</th>
+                    <th scope="col">Distance</th>
+                    <th scope="col">Elevation</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var trail in Model)
+                {
+                    <tr>
+                        <td style="width:20%">@trail.NationalPark.Name</td>
+                        <td style="width:20%">@trail.Name</td>
+                        <td style="width:15%">@trail.Distance</td>
+                        <td style="width:15%">@trail.Elevation</td>
+                        <td>
+                            <button onclick="window.location.href = 'TrailsParks/Upsert/@trail.TrailId'" type="button" class="btn btn-primary float-right mr-2"><i class="fas fa-edit"></i></button>
+                            <button onclick="Delete('TrailsParks/Delete/@trail.TrailId')" type="button" class="btn btn-danger float-right mr-2"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+@section Scripts{
+
+    <script src="~/js/Classes/Trail.js"></script>
+}
