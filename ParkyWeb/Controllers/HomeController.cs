@@ -16,15 +16,13 @@ namespace ParkyWeb.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly INationalParkRepository _npRepo;
         private readonly ITrailRepository _trailsRepo;
         private readonly IAccountRepository _accountRepo;
 
 
-        public HomeController(ILogger<HomeController> logger, ITrailRepository trailsRepo, INationalParkRepository npRepo, IAccountRepository accountRepo)
+        public HomeController(ITrailRepository trailsRepo, INationalParkRepository npRepo, IAccountRepository accountRepo)
         {
-            _logger = logger;
             this._trailsRepo = trailsRepo;
             this._npRepo = npRepo;
             this._accountRepo = accountRepo;
